@@ -2,11 +2,6 @@
 #include <cmath>
 using namespace std;
 
-void init_zero(int** m, int N) {
-	for (size_t i = 0; i != N; i++) 
-		for (size_t j = 0; j != N; j++)
-			m[i][j] = 0;	
-}
 
 void print_matrix(int**& m, int N) {
 	for (size_t i = 0; i < N; i++) {
@@ -18,11 +13,6 @@ void print_matrix(int**& m, int N) {
 
 void spiral_matrix(int**& m, int N) {
 	m = new int*[N];
-
-	/*m[0] = new int[N * N];
-
-	for (size_t i = 1; i != N; i++)
-		m[i] = m[i - 1] + N;*/
 
 	for (size_t i = 0; i < N; i++)
 		m[i] = new int[N];
@@ -45,10 +35,14 @@ void spiral_matrix(int**& m, int N) {
 }
 
 int main() {
-	int** m = nullptr, 
-		  N;
+	int** m = nullptr, N;
 	cin >> N;
 	spiral_matrix(m, N);
 	print_matrix(m, N);
+	
+	for (size_t i = 0; i < N; i++)
+		delete m[i];
+	delete[] m;
+	
 	return 0;
 }
