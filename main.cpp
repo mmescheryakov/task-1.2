@@ -3,7 +3,7 @@
 using namespace std;
 
 
-void print_matrix(int**& m, int N) {
+void print_matrix(int** m, int N) {
 	for (size_t i = 0; i < N; i++) {
 		for (size_t j = 0; j < N; j++)
 			cout << m[i][j] << ' ';
@@ -11,12 +11,7 @@ void print_matrix(int**& m, int N) {
 	}					
 }
 
-void spiral_matrix(int**& m, int N) {
-	m = new int*[N];
-
-	for (size_t i = 0; i < N; i++)
-		m[i] = new int[N];
-	
+void spiral_matrix(int** m, int N) {
 
 	int i,  j;
 	i = j = 0;
@@ -35,8 +30,15 @@ void spiral_matrix(int**& m, int N) {
 }
 
 int main() {
-	int** m = nullptr, N;
+	int** m;
+	int N;
 	cin >> N;
+	
+	m = new int* [N];
+	for (size_t i = 0; i < N; i++) {
+		m[i] = new int[N];
+	}
+	
 	spiral_matrix(m, N);
 	print_matrix(m, N);
 	
